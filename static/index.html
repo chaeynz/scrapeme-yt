@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YouTube Video Downloader</title>
+    <script>
+        function validateAndDownload() {
+            var inputField = document.getElementById('videoURL');
+            var url = inputField.value;
+            
+            // JavaScript regex pattern equivalent to the provided Python regex
+            var regex = /(?:v=|\/)([0-9A-Za-z_-]{11})/;
+
+            var match = url.match(regex);
+            if (match && match[1]) {
+                // If there is a match, construct the download URL
+                var videoId = match[1];
+                var downloadUrl = `api/yt/video/${videoId}.mp4`;
+
+                // Redirect the browser to the download URL
+                window.location.href = downloadUrl;
+            } else {
+                // If no match, alert the user
+                alert("Please enter a valid YouTube video URL.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>YouTube Video Downloader</h1>
+    <input type="text" id="videoURL" placeholder="Enter YouTube URL here">
+    <button onclick="validateAndDownload()">Download MP4</button>
+</body>
+</html>
