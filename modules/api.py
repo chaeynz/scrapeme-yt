@@ -83,7 +83,7 @@ def endpoint_file_download(video_id, file_format):
                         return jsonify({'status': '500', 'error': 'Internal Server Error', 'message': 'Something happened'}), 500
             return jsonify({'status': '400', 'error': 'Bad Request', 'message': 'The file does not exist'}), 400
     else:
-        return jsonify({'status': '500', 'error': 'Internal Server Error', 'message': 'The supplied file format'})
+        return jsonify({'status': '500', 'error': 'Internal Server Error', 'message': 'The supplied file format is not allowed'})
 
 @app.route('/api/yt/playlist/<playlist_id>', methods=[])
 def endpoint_playlist():
